@@ -1,8 +1,11 @@
 #coding=utf-8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 import MySQLdb
 class readdata(): #connect函数返回该数据库的链接
     def __init__(self,db,passwd,user):
-        self.db="testsmall"
+        self.db=db
         self.passwd="uiop.123.123"
         self.user="root"
         self.port=3306
@@ -54,13 +57,12 @@ def groupinfo(con):
     
 if __name__=="__main__":
     try:
-      database=readdata("testsmall","uiop.123.123",'root')
+      database=readdata("test","uiop.123.123",'root')
       con1=database.connectsql()
       data=retalldata(con1)
       print len(data)
-      print data[1]
-      print data[2]
-      infos=groupinfo(con1)
-      print infos['AlarmSource']
+      #print data[2]
+      #infos=groupinfo(con1)
+      #print infos['AlarmSource']
     finally:
          con1.close()
